@@ -1,11 +1,12 @@
 import unittest
+import os
 from inspect import signature
+
 
 from lab_vikings.vikings_clases import Viking
 
 
 class TestViking(unittest.TestCase):
-
     def setUp(self):
         self.name = 'Harald'
         self.strength = 150
