@@ -1,5 +1,5 @@
 # Project lab-data-vikings
-import random
+import random as rd
 
 
 # Soldier (constructor, ataque y daño)
@@ -49,9 +49,24 @@ class War:
     def add_saxon(self,saxon):
         self.saxon_army.append(saxon)
     def viking_attack(self):
-        pass
+        saxon_soldier=rd.choice(self.saxon_army)
+        viking_soldier=rd.choice(self.viking_army)
+        damage=viking_soldier.strength
+        msg=saxon_soldier.receive_damage(damage)
+        if msg=="A Saxon has died in combat":
+            self.saxon_army.remove(saxon_soldier)
+        return msg
     def saxon_attack(self):
-        pass
+        saxon_soldier = rd.choice(self.saxon_army)
+        viking_soldier = rd.choice(self.viking_army)
+        damage = saxon_soldier.strength
+        msg = viking_soldier.receive_damage(damage)
+        if msg == "A Saxon has died in combat":
+            self.viking_army.remove(viking_soldier)
+        return msg
     def show_status(self):
-        pass
+        if len(self.viking_army)==0:
+            return "Saxons have fought for their lives and survive another day..."
+        
+
 
