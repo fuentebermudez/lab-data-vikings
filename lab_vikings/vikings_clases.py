@@ -54,19 +54,23 @@ class War:
         damage=viking_soldier.strength
         msg=saxon_soldier.receive_damage(damage)
         if msg=="A Saxon has died in combat":
-            self.saxon_army.remove(saxon_soldier)
+            self.saxon_army.pop(0)
         return msg
     def saxon_attack(self):
         saxon_soldier = rd.choice(self.saxon_army)
         viking_soldier = rd.choice(self.viking_army)
         damage = saxon_soldier.strength
         msg = viking_soldier.receive_damage(damage)
-        if msg == "A Saxon has died in combat":
-            self.viking_army.remove(viking_soldier)
+        if msg == f'{viking_soldier.name} has died in combat':
+            self.viking_army.pop(0)
         return msg
     def show_status(self):
+        resultado=""
         if len(self.viking_army)==0:
-            return "Saxons have fought for their lives and survive another day..."
-        
-
+            result="Saxons have fought for their lives and survive another day..."
+        elif len(self.saxon_army)==0 :
+            result="Vikings have won the war of the century!"
+        else :
+            result= "Vikings and Saxons are still in the thick of battle."
+        return result
 
